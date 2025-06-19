@@ -1,13 +1,31 @@
+//src/app/app.component.ts
+
 import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
+
+// Importar todos los componentes
+import { HeaderComponent } from './components/header/header.component';
+import { HeroSectionComponent } from './components/hero-section/hero-section.component';
+import { CatalogoComponent } from './components/catalogo/catalogo.component';
+import { ContactoComponent } from './components/contacto/contacto.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet],
+  imports: [
+    CommonModule, 
+    RouterOutlet,
+    HeaderComponent,
+    HeroSectionComponent,
+    CatalogoComponent,
+    ContactoComponent,
+    FooterComponent
+  ],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.scss'
+  styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'temp-catalogo';
+  title = 'catalogo-semillas';
 }

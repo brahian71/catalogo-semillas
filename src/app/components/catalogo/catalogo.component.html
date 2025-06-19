@@ -1,0 +1,48 @@
+<!-- src/app/components/catalogo/catalogo.component.html -->
+
+<section class="catalogo-section">
+  <div class="container">
+    <!-- Título del catálogo -->
+    <div class="catalogo-header">
+      <h2 class="catalogo-title">Nuestro Catálogo de Semillas</h2>
+      <p class="catalogo-subtitle">Descubre nuestra amplia variedad de semillas de alta calidad</p>
+    </div>
+
+    <!-- Filtros por categoría -->
+    <div class="filtros-container">
+      <h3 class="filtros-title">Filtrar por categoría:</h3>
+      <div class="filtros-botones">
+        <button 
+          class="filtro-btn"
+          [class.active]="categoriaSeleccionada === 'todas'"
+          (click)="filtrarPorCategoria('todas')">
+          Todas
+        </button>
+        
+        <button 
+          *ngFor="let categoria of categorias"
+          class="filtro-btn"
+          [class.active]="categoriaSeleccionada === categoria"
+          (click)="filtrarPorCategoria(categoria)">
+          {{ capitalizarTexto(categoria) }}
+        </button>
+      </div>
+    </div>
+
+    <!-- Grid de productos -->
+    <div class="productos-grid">
+      <app-producto-card 
+        *ngFor="let producto of productos$ | async; trackBy: trackByProductoId"
+        [producto]="producto">
+      </app-producto-card>
+    </div>
+
+    <!-- Mensaje si no hay productos -->
+    <div 
+      class="no-productos" 
+      *ngIf="(productos$ | async)?.length === 0">
+      <h3>No hay productos disponibles en esta categoría</h3>
+      <p>Prueba seleccionando otra categoría o vuelve más tarde.</p>
+    </div>
+  </div>
+</section>
