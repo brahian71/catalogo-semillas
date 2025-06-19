@@ -1,0 +1,218 @@
+//src/app/components/header/header.component.scss
+
+.main-header {
+  background: linear-gradient(135deg, var(--white) 0%, var(--gray-50) 100%);
+  box-shadow: var(--shadow);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--gray-200);
+  
+  .container {
+    padding: var(--spacing-md) var(--spacing-md);
+  }
+}
+
+.header-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-xl);
+  
+  @media (max-width: 768px) {
+    flex-direction: column;
+    gap: var(--spacing-md);
+    text-align: center;
+  }
+}
+
+/* ===== LOGO SECTION ===== */
+.logo-section {
+  flex-shrink: 0;
+  
+  .business-name {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    margin-bottom: var(--spacing-xs);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    
+    &:hover {
+      color: var(--primary-light);
+      transition: var(--transition);
+    }
+    
+    @media (max-width: 768px) {
+      font-size: 1.5rem;
+      justify-content: center;
+    }
+  }
+  
+  .business-tagline {
+    font-size: 0.875rem;
+    color: var(--gray-500);
+    font-weight: 400;
+    margin-bottom: 0;
+    font-style: italic;
+    
+    @media (max-width: 768px) {
+      font-size: 0.8rem;
+    }
+  }
+}
+
+/* ===== NAVIGATION ===== */
+.main-nav {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xl);
+  
+  @media (max-width: 768px) {
+    gap: var(--spacing-md);
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  
+  .nav-link {
+    font-weight: 500;
+    color: var(--gray-600);
+    text-decoration: none;
+    padding: var(--spacing-sm) var(--spacing-md);
+    border-radius: var(--radius);
+    transition: var(--transition);
+    position: relative;
+    
+    &:hover {
+      color: var(--primary-color);
+      background-color: rgba(45, 90, 39, 0.05);
+      transform: translateY(-1px);
+    }
+    
+    &:active {
+      transform: translateY(0);
+    }
+    
+    // Efecto de línea animada
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 50%;
+      width: 0;
+      height: 2px;
+      background: var(--primary-color);
+      transition: var(--transition);
+      transform: translateX(-50%);
+    }
+    
+    &:hover::after {
+      width: 80%;
+    }
+    
+    @media (max-width: 768px) {
+      padding: var(--spacing-xs) var(--spacing-sm);
+      font-size: 0.9rem;
+    }
+  }
+}
+
+/* ===== CONTACT SECTION ===== */
+.contact-section {
+  flex-shrink: 0;
+  
+  .whatsapp-btn {
+    background: linear-gradient(135deg, #25D366 0%, #20BA5A 100%);
+    color: var(--white);
+    border: none;
+    padding: var(--spacing-md) var(--spacing-lg);
+    border-radius: var(--radius-md);
+    font-weight: 600;
+    font-size: 0.95rem;
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    cursor: pointer;
+    transition: var(--transition);
+    box-shadow: var(--shadow);
+    text-decoration: none;
+    
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-lg);
+      background: linear-gradient(135deg, #20BA5A 0%, #25D366 100%);
+    }
+    
+    &:active {
+      transform: translateY(0);
+    }
+    
+    svg {
+      width: 20px;
+      height: 20px;
+      flex-shrink: 0;
+    }
+    
+    @media (max-width: 768px) {
+      padding: var(--spacing-sm) var(--spacing-md);
+      font-size: 0.9rem;
+      
+      svg {
+        width: 18px;
+        height: 18px;
+      }
+    }
+  }
+}
+
+/* ===== MOBILE OPTIMIZATION ===== */
+@media (max-width: 576px) {
+  .main-header {
+    .container {
+      padding: var(--spacing-sm) var(--spacing-md);
+    }
+  }
+  
+  .header-content {
+    gap: var(--spacing-sm);
+  }
+  
+  .logo-section {
+    .business-name {
+      font-size: 1.25rem;
+    }
+    
+    .business-tagline {
+      font-size: 0.75rem;
+    }
+  }
+  
+  .main-nav {
+    .nav-link {
+      font-size: 0.85rem;
+      padding: var(--spacing-xs);
+    }
+  }
+  
+  .contact-section {
+    .whatsapp-btn {
+      padding: var(--spacing-sm);
+      font-size: 0.85rem;
+      
+      svg {
+        width: 16px;
+        height: 16px;
+      }
+    }
+  }
+}
+
+/* ===== SCROLL EFFECT ===== */
+.main-header.scrolled {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  box-shadow: var(--shadow-md);
+}

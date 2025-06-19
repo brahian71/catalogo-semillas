@@ -1,0 +1,273 @@
+//src/app/components/hero-section/hero-section.component.scss
+
+/* ===== HERO SECTION STYLES ===== */
+
+.hero-section {
+  background: linear-gradient(135deg, 
+    var(--primary-color) 0%, 
+    var(--primary-light) 50%, 
+    var(--secondary-color) 100%
+  );
+  position: relative;
+  padding: var(--spacing-3xl) 0;
+  overflow: hidden;
+  color: var(--white);
+  
+  // Patrón de fondo decorativo
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: 
+      radial-gradient(circle at 20% 50%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+      radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+      radial-gradient(circle at 40% 80%, rgba(255, 255, 255, 0.05) 0%, transparent 50%);
+    pointer-events: none;
+  }
+  
+  @media (max-width: 768px) {
+    padding: var(--spacing-2xl) 0;
+  }
+  
+  .container {
+    position: relative;
+    z-index: 1;
+  }
+}
+
+.hero-content {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto;
+  animation: fadeInUp 0.8s ease-out;
+  
+  @media (max-width: 768px) {
+    max-width: 100%;
+    padding: 0 var(--spacing-md);
+  }
+}
+
+/* ===== HERO TYPOGRAPHY ===== */
+.hero-title {
+  font-size: 3.5rem;
+  font-weight: 800;
+  line-height: 1.1;
+  margin-bottom: var(--spacing-lg);
+  color: var(--white);
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  
+  // Efecto de gradiente en el texto
+  background: linear-gradient(135deg, var(--white) 0%, rgba(255, 255, 255, 0.8) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  
+  @media (max-width: 1024px) {
+    font-size: 3rem;
+  }
+  
+  @media (max-width: 768px) {
+    font-size: 2.25rem;
+    margin-bottom: var(--spacing-md);
+  }
+  
+  @media (max-width: 576px) {
+    font-size: 1.875rem;
+  }
+}
+
+.hero-subtitle {
+  font-size: 1.25rem;
+  font-weight: 400;
+  line-height: 1.6;
+  margin-bottom: var(--spacing-2xl);
+  color: rgba(255, 255, 255, 0.9);
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  
+  @media (max-width: 768px) {
+    font-size: 1.125rem;
+    margin-bottom: var(--spacing-xl);
+  }
+  
+  @media (max-width: 576px) {
+    font-size: 1rem;
+    margin-bottom: var(--spacing-lg);
+  }
+}
+
+/* ===== HERO BUTTONS ===== */
+.hero-buttons {
+  display: flex;
+  gap: var(--spacing-lg);
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  
+  @media (max-width: 576px) {
+    flex-direction: column;
+    gap: var(--spacing-md);
+    width: 100%;
+  }
+  
+  .btn-primary {
+    background: var(--white);
+    color: var(--primary-color);
+    font-weight: 600;
+    font-size: 1.125rem;
+    padding: var(--spacing-lg) var(--spacing-2xl);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-lg);
+    transition: var(--transition);
+    
+    &:hover {
+      background: var(--gray-50);
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-xl);
+    }
+    
+    @media (max-width: 576px) {
+      width: 100%;
+      max-width: 280px;
+      padding: var(--spacing-md) var(--spacing-xl);
+      font-size: 1rem;
+    }
+  }
+  
+  .btn-secondary {
+    background: transparent;
+    color: var(--white);
+    border: 2px solid rgba(255, 255, 255, 0.8);
+    font-weight: 600;
+    font-size: 1.125rem;
+    padding: var(--spacing-lg) var(--spacing-2xl);
+    border-radius: var(--radius-lg);
+    backdrop-filter: blur(10px);
+    transition: var(--transition);
+    
+    &:hover {
+      background: rgba(255, 255, 255, 0.1);
+      border-color: var(--white);
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-lg);
+    }
+    
+    @media (max-width: 576px) {
+      width: 100%;
+      max-width: 280px;
+      padding: var(--spacing-md) var(--spacing-xl);
+      font-size: 1rem;
+    }
+  }
+}
+
+/* ===== ANIMACIONES ===== */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* ===== ELEMENTOS DECORATIVOS ===== */
+.hero-section::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 60px;
+  background: linear-gradient(135deg, transparent 0%, var(--gray-50) 100%);
+  transform: skewY(-1deg);
+  transform-origin: bottom left;
+}
+
+/* ===== RESPONSIVE ADJUSTMENTS ===== */
+@media (max-width: 1200px) {
+  .hero-section {
+    padding: var(--spacing-2xl) 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-section {
+    padding: var(--spacing-xl) 0;
+    
+    &::after {
+      height: 40px;
+    }
+  }
+}
+
+@media (max-width: 576px) {
+  .hero-section {
+    padding: var(--spacing-lg) 0;
+    
+    &::after {
+      height: 30px;
+    }
+  }
+  
+  .hero-content {
+    padding: 0 var(--spacing-sm);
+  }
+}
+
+/* ===== SCROLL INDICATOR ===== */
+.scroll-indicator {
+  position: absolute;
+  bottom: var(--spacing-xl);
+  left: 50%;
+  transform: translateX(-50%);
+  color: rgba(255, 255, 255, 0.7);
+  animation: float 3s ease-in-out infinite;
+  cursor: pointer;
+  
+  &:hover {
+    color: var(--white);
+  }
+  
+  @media (max-width: 768px) {
+    display: none;
+  }
+}

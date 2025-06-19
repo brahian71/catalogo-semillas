@@ -3,7 +3,7 @@
 export interface Producto {
   id: number;
   nombre: string;
-  precio: number;
+  precio: number; // Precio por kilogramo o por porción
   descripcion: string;
   propiedadesNutricionales: PropiedadNutricional[];
   imagen: string;
@@ -11,6 +11,8 @@ export interface Producto {
   disponible: boolean;
   descuento?: number;
   fechaCreacion: Date;
+  unidadVenta: string; // 'kg', '500g', '250g', 'paquete', etc.
+  origen?: string; // País o región de origen
 }
 
 export interface PropiedadNutricional {
@@ -20,10 +22,11 @@ export interface PropiedadNutricional {
 }
 
 export enum CategoriaProducto {
-  HORTALIZAS = 'hortalizas',
-  FRUTAS = 'frutas', 
-  HIERBAS = 'hierbas',
-  FLORES = 'flores',
-  CEREALES = 'cereales',
-  LEGUMBRES = 'legumbres'
+  FRUTOS_SECOS = 'frutos-secos',
+  SEMILLAS_COMESTIBLES = 'semillas-comestibles',
+  GRANOS_CEREALES = 'granos-cereales', 
+  LEGUMBRES = 'legumbres',
+  DESHIDRATADOS = 'deshidratados',
+  ESPECIAS = 'especias',
+  HARINAS = 'harinas'
 }

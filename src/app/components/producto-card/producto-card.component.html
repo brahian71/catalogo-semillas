@@ -1,4 +1,5 @@
 <!-- src/app/components/producto-card/producto-card.component.html -->
+ 
 <div class="producto-card" [class.no-disponible]="!producto.disponible">
   <!-- Badge de descuento -->
   <div class="descuento-badge" *ngIf="producto.descuento">
@@ -29,9 +30,19 @@
     <h3 class="producto-nombre">{{ producto.nombre }}</h3>
     <p class="producto-descripcion">{{ producto.descripcion }}</p>
 
+    <!-- Información adicional del producto -->
+    <div class="info-adicional">
+      <span class="unidad-venta" *ngIf="producto.unidadVenta">
+        📦 {{ producto.unidadVenta }}
+      </span>
+      <span class="origen" *ngIf="producto.origen">
+        🌍 {{ producto.origen }}
+      </span>
+    </div>
+
     <!-- Propiedades nutricionales -->
     <div class="propiedades-nutricionales" *ngIf="producto.propiedadesNutricionales.length > 0">
-      <h4>Propiedades Nutricionales:</h4>
+      <h4>Valores Nutricionales:</h4>
       <ul>
         <li *ngFor="let propiedad of producto.propiedadesNutricionales | slice:0:3">
           <strong>{{ propiedad.nombre }}:</strong> 
@@ -47,6 +58,7 @@
     <div class="precio-container">
       <div class="precio-actual">
         ${{ precioConDescuento | number:'1.0-0' }}
+        <span class="precio-unidad" *ngIf="producto.unidadVenta">/ {{ producto.unidadVenta }}</span>
       </div>
       <div class="precio-original" *ngIf="producto.descuento">
         ${{ producto.precio | number:'1.0-0' }}

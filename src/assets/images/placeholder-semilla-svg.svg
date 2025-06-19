@@ -1,16 +1,19 @@
 <svg width="200" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
   <rect width="200" height="200" fill="#f8f9fa" stroke="#e9ecef" stroke-width="2"/>
   
-  <!-- Semilla -->
-  <ellipse cx="100" cy="120" rx="25" ry="15" fill="#8B4513" opacity="0.8"/>
+  <!-- Contenedor/Bowl -->
+  <ellipse cx="100" cy="140" rx="60" ry="20" fill="#D2B48C" opacity="0.8"/>
+  <ellipse cx="100" cy="135" rx="60" ry="20" fill="#DEB887" opacity="0.9"/>
   
-  <!-- Brote -->
-  <path d="M100 105 Q100 85 85 75 Q100 85 115 75 Q100 85 100 105" fill="#228B22" opacity="0.7"/>
-  
-  <!-- Hojas -->
-  <ellipse cx="90" cy="80" rx="12" ry="8" fill="#32CD32" opacity="0.6" transform="rotate(-20 90 80)"/>
-  <ellipse cx="110" cy="80" rx="12" ry="8" fill="#32CD32" opacity="0.6" transform="rotate(20 110 80)"/>
+  <!-- Productos a granel (frutos secos, granos) -->
+  <circle cx="85" cy="125" r="6" fill="#8B4513" opacity="0.8"/>
+  <circle cx="100" cy="120" r="5" fill="#CD853F" opacity="0.8"/>
+  <circle cx="115" cy="125" r="6" fill="#A0522D" opacity="0.8"/>
+  <circle cx="90" cy="135" r="4" fill="#D2691E" opacity="0.8"/>
+  <circle cx="110" cy="135" r="5" fill="#B8860B" opacity="0.8"/>
+  <circle cx="95" cy="115" r="4" fill="#BC8F8F" opacity="0.8"/>
+  <circle cx="105" cy="130" r="4" fill="#DAA520" opacity="0.8"/>
   
   <!-- Texto -->
-  <text x="100" y="160" font-family="Arial, sans-serif" font-size="14" fill="#6c757d" text-anchor="middle">🌱 Semilla</text>
+  <text x="100" y="170" font-family="Arial, sans-serif" font-size="14" fill="#6c757d" text-anchor="middle">🥜 Productos a Granel</text>
 </svg>

@@ -14,7 +14,7 @@ export class WhatsappService {
 
   // Enviar mensaje de consulta general
   enviarMensajeConsulta(): void {
-    const mensaje = '¡Hola! Me interesa conocer más sobre su catálogo de semillas. ¿Podrían brindarme información?';
+    const mensaje = '¡Hola! Me interesa conocer más sobre sus productos secos a granel. ¿Podrían brindarme información sobre frutos secos, granos y semillas disponibles?';
     this.abrirWhatsApp(mensaje);
   }
 
@@ -52,7 +52,7 @@ export class WhatsappService {
 
   // Enviar consulta sobre ubicación
   consultarUbicacion(): void {
-    const mensaje = 'Hola, me gustaría conocer la ubicación de su local de semillas. ¿Podrían compartir la dirección y horarios de atención?';
+    const mensaje = 'Hola, me gustaría conocer la ubicación de su tienda de productos secos a granel. ¿Podrían compartir la dirección y horarios de atención?';
     this.abrirWhatsApp(mensaje);
   }
 
