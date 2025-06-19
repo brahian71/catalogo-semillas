@@ -3,23 +3,20 @@
 <footer class="main-footer">
   <div class="container">
     <div class="footer-content">
-      <!-- Información del negocio -->
       <div class="footer-section">
         <h3>🥜 GranelVerde</h3>
         <p>Productos secos a granel de calidad. Ofrecemos frutos secos, granos, semillas comestibles y alimentos deshidratados para una alimentación saludable y natural.</p>
       </div>
 
-      <!-- Enlaces rápidos -->
       <div class="footer-section">
         <h4>Enlaces Rápidos</h4>
         <ul>
-          <li><a href="#catalogo">Catálogo</a></li>
-          <li><a href="#contacto">Contacto</a></li>
-          <li><a href="#ubicacion">Ubicación</a></li>
+          <li><a href="#catalogo" (click)="scrollToSection('catalogo', $event)">Catálogo</a></li>
+          <li><a href="#contacto" (click)="scrollToSection('contacto', $event)">Contacto</a></li>
+          <li><a href="#contacto" (click)="scrollToSection('contacto', $event)">Ubicación</a></li>
         </ul>
       </div>
 
-      <!-- Contacto -->
       <div class="footer-section">
         <h4>Contacto</h4>
         <p>📍 Calle 123 #45-67, Bogotá</p>

@@ -1,36 +1,29 @@
 <!-- src/app/components/producto-card/producto-card.component.html -->
  
 <div class="producto-card" [class.no-disponible]="!producto.disponible">
-  <!-- Badge de descuento -->
   <div class="descuento-badge" *ngIf="producto.descuento">
     -{{ producto.descuento }}%
   </div>
 
-  <!-- Badge de categoría -->
   <div class="categoria-badge">
     {{ categoriaCapitalizada }}
   </div>
 
-  <!-- Imagen del producto -->
   <div class="producto-imagen">
     <img 
       [src]="producto.imagen" 
       [alt]="producto.nombre"
       (error)="onImageError($event)"
     />
-    
-    <!-- Overlay para productos no disponibles -->
     <div class="no-disponible-overlay" *ngIf="!producto.disponible">
       <span>No Disponible</span>
     </div>
   </div>
 
-  <!-- Información del producto -->
   <div class="producto-info">
     <h3 class="producto-nombre">{{ producto.nombre }}</h3>
     <p class="producto-descripcion">{{ producto.descripcion }}</p>
 
-    <!-- Información adicional del producto -->
     <div class="info-adicional">
       <span class="unidad-venta" *ngIf="producto.unidadVenta">
         📦 {{ producto.unidadVenta }}
@@ -40,7 +33,6 @@
       </span>
     </div>
 
-    <!-- Propiedades nutricionales -->
     <div class="propiedades-nutricionales" *ngIf="producto.propiedadesNutricionales.length > 0">
       <h4>Valores Nutricionales:</h4>
       <ul>
@@ -54,7 +46,6 @@
       </span>
     </div>
 
-    <!-- Precio -->
     <div class="precio-container">
       <div class="precio-actual">
         ${{ precioConDescuento | number:'1.0-0' }}
@@ -65,7 +56,6 @@
       </div>
     </div>
 
-    <!-- Botón de consulta -->
     <button 
       class="consultar-btn"
       [disabled]="!producto.disponible"

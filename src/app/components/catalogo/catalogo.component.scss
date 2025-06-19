@@ -1,7 +1,5 @@
 //src/app/components/catalogo/catalogo.component.scss
 
-/* ===== CATÁLOGO COMPONENT STYLES ===== */
-
 .catalogo-section {
   padding: var(--spacing-3xl) 0;
   background: var(--gray-50);
@@ -32,15 +30,14 @@
   color: var(--gray-900);
   margin-bottom: var(--spacing-md);
   position: relative;
-  
-  // Línea decorativa debajo del título
+
   &::after {
     content: '';
     position: absolute;
     bottom: -var(--spacing-sm);
     left: 50%;
     transform: translateX(-50%);
-    width: 60px;
+    width: 780px;
     height: 4px;
     background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
     border-radius: var(--radius);
@@ -48,10 +45,16 @@
   
   @media (max-width: 768px) {
     font-size: 2rem;
+    &::after {
+      width: 80px;
+    }
   }
   
   @media (max-width: 576px) {
     font-size: 1.75rem;
+    &::after {
+      width: 60px;
+    }
   }
 }
 
@@ -261,8 +264,6 @@
   app-producto-card {
     animation: fadeInUp 0.6s ease-out;
     animation-fill-mode: both;
-    
-    // Staggered animation
     @for $i from 1 through 12 {
       &:nth-child(#{$i}) {
         animation-delay: #{$i * 0.1}s;
@@ -294,5 +295,5 @@
 
 /* ===== SCROLL TO TOP INTEGRATION ===== */
 .catalogo-section {
-  scroll-margin-top: 100px; // Para navegación suave
+  scroll-margin-top: 100px;
 }

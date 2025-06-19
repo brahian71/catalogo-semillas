@@ -50,27 +50,22 @@ export class WhatsappService {
     this.abrirWhatsApp(mensaje);
   }
 
-  // Enviar consulta sobre ubicación
   consultarUbicacion(): void {
     const mensaje = 'Hola, me gustaría conocer la ubicación de su tienda de productos secos a granel. ¿Podrían compartir la dirección y horarios de atención?';
     this.abrirWhatsApp(mensaje);
   }
 
-  // Método privado para abrir WhatsApp
   private abrirWhatsApp(mensaje: string): void {
     const mensajeEncoded = encodeURIComponent(mensaje);
     const url = `https://wa.me/${this.numeroWhatsapp}?text=${mensajeEncoded}`;
-    
-    // Abrir en nueva pestaña
+
     window.open(url, '_blank');
   }
 
-  // Obtener enlace de WhatsApp (útil para mostrar en botones)
   obtenerEnlaceWhatsApp(): string {
     return `https://wa.me/${this.numeroWhatsapp}`;
   }
 
-  // Actualizar número de WhatsApp
   actualizarNumero(nuevoNumero: string): void {
     this.numeroWhatsapp = nuevoNumero;
   }

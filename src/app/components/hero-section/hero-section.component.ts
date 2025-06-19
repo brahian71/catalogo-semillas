@@ -18,4 +18,15 @@ export class HeroSectionComponent {
   contactarWhatsApp(): void {
     this.whatsappService.enviarMensajeConsulta();
   }
+
+  scrollToCatalogo(event: Event): void {
+    event.preventDefault();
+    const catalogoElement = document.getElementById('catalogo');
+    if (catalogoElement) {
+      catalogoElement.scrollIntoView({ 
+        behavior: 'smooth',
+        block: 'start'
+      });
+    }
+  }
 }

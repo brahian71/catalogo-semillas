@@ -17,7 +17,6 @@ export class ProductoCardComponent {
 
   constructor(private whatsappService: WhatsappService) {}
 
-  // Calcular precio con descuento
   get precioConDescuento(): number {
     if (this.producto.descuento) {
       return this.producto.precio * (1 - this.producto.descuento / 100);
@@ -25,18 +24,15 @@ export class ProductoCardComponent {
     return this.producto.precio;
   }
 
-  // Consultar producto por WhatsApp
   consultarProducto(): void {
     this.whatsappService.consultarProducto(this.producto);
   }
 
-  // Capitalizar categoría para mostrar
   get categoriaCapitalizada(): string {
     return this.producto.categoria.charAt(0).toUpperCase() + 
            this.producto.categoria.slice(1);
   }
 
-  // Manejar error de imagen
   onImageError(event: Event): void {
     const target = event.target as HTMLImageElement;
     target.src = 'assets/images/placeholder-semilla.svg';

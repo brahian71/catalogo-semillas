@@ -1,6 +1,5 @@
 //src/app/components/header/header.component.ts
 
-
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { WhatsappService } from '../../services/whatsapp.service';
@@ -15,9 +14,18 @@ import { WhatsappService } from '../../services/whatsapp.service';
 export class HeaderComponent {
 
   constructor(private whatsappService: WhatsappService) { }
-
-  // Abrir WhatsApp para consulta general
   contactarWhatsApp(): void {
     this.whatsappService.enviarMensajeConsulta();
+  }
+
+  scrollToSection(sectionId: string, event: Event): void {
+    event.preventDefault();
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ 
+        behavior: 'smooth',
+        block: 'start'
+      });
+    }
   }
 }

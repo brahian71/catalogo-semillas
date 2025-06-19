@@ -1,4 +1,5 @@
 //src/app/components/catalogo/catalogo.component.ts
+
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Observable } from 'rxjs';
@@ -23,10 +24,8 @@ export class CatalogoComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    // Inicialización si es necesaria
   }
 
-  // Filtrar productos por categoría
   filtrarPorCategoria(categoria: CategoriaProducto | 'todas'): void {
     this.categoriaSeleccionada = categoria;
     
@@ -36,13 +35,9 @@ export class CatalogoComponent implements OnInit {
       this.productos$ = this.productosService.getProductosPorCategoria(categoria);
     }
   }
-
-  // Capitalizar primera letra para mostrar en UI
   capitalizarTexto(texto: string): string {
     return texto.charAt(0).toUpperCase() + texto.slice(1);
   }
-
-  // Track by function para optimizar ngFor
   trackByProductoId(index: number, producto: Producto): number {
     return producto.id;
   }

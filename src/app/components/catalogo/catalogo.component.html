@@ -2,13 +2,11 @@
 
 <section class="catalogo-section">
   <div class="container">
-    <!-- Título del catálogo -->
+
     <div class="catalogo-header">
       <h2 class="catalogo-title">Nuestro Catálogo de Productos a Granel</h2>
       <p class="catalogo-subtitle">Descubre nuestra amplia variedad de frutos secos, granos, semillas y alimentos deshidratados</p>
     </div>
-
-    <!-- Filtros por categoría -->
     <div class="filtros-container">
       <h3 class="filtros-title">Filtrar por categoría:</h3>
       <div class="filtros-botones">
@@ -28,16 +26,12 @@
         </button>
       </div>
     </div>
-
-    <!-- Grid de productos -->
     <div class="productos-grid">
       <app-producto-card 
         *ngFor="let producto of productos$ | async; trackBy: trackByProductoId"
         [producto]="producto">
       </app-producto-card>
     </div>
-
-    <!-- Mensaje si no hay productos -->
     <div 
       class="no-productos" 
       *ngIf="(productos$ | async)?.length === 0">

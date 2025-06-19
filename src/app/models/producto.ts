@@ -3,7 +3,7 @@
 export interface Producto {
   id: number;
   nombre: string;
-  precio: number; // Precio por kilogramo o por porción
+  precio: number; 
   descripcion: string;
   propiedadesNutricionales: PropiedadNutricional[];
   imagen: string;
@@ -11,8 +11,8 @@ export interface Producto {
   disponible: boolean;
   descuento?: number;
   fechaCreacion: Date;
-  unidadVenta: string; // 'kg', '500g', '250g', 'paquete', etc.
-  origen?: string; // País o región de origen
+  unidadVenta: string;
+  origen?: string;
 }
 
 export interface PropiedadNutricional {
