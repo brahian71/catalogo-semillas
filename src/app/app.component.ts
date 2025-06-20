@@ -9,6 +9,7 @@ import { HeroSectionComponent } from './components/hero-section/hero-section.com
 import { CatalogoComponent } from './components/catalogo/catalogo.component';
 import { ContactoComponent } from './components/contacto/contacto.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { MiniCarritoComponent } from './components/mini-carrito/mini-carrito.component';
 
 @Component({
   selector: 'app-root',
@@ -20,7 +21,8 @@ import { FooterComponent } from './components/footer/footer.component';
     HeroSectionComponent,
     CatalogoComponent,
     ContactoComponent,
-    FooterComponent
+    FooterComponent,
+    MiniCarritoComponent
   ],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']

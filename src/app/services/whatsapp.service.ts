@@ -8,17 +8,15 @@ import { Producto } from '../models/producto';
 })
 export class WhatsappService {
   // Número de WhatsApp del negocio (reemplaza con tu número real)
-  private numeroWhatsapp = '573XXXXXXXXX'; // Formato: código país + número sin + (reemplaza las X con tu número)
+  private numeroWhatsapp = '573XXXXXXXXX'; 
   
   constructor() { }
 
-  // Enviar mensaje de consulta general
   enviarMensajeConsulta(): void {
     const mensaje = '¡Hola! Me interesa conocer más sobre sus productos secos a granel. ¿Podrían brindarme información sobre frutos secos, granos y semillas disponibles?';
     this.abrirWhatsApp(mensaje);
   }
 
-  // Enviar consulta sobre un producto específico
   consultarProducto(producto: Producto): void {
     const mensaje = `¡Hola! Me interesa el producto: *${producto.nombre}*
     
@@ -30,7 +28,6 @@ export class WhatsappService {
     this.abrirWhatsApp(mensaje);
   }
 
-  // Enviar mensaje de pedido
   realizarPedido(productos: {producto: Producto, cantidad: number}[]): void {
     let mensaje = '¡Hola! Me gustaría realizar el siguiente pedido:\n\n';
     
@@ -55,10 +52,14 @@ export class WhatsappService {
     this.abrirWhatsApp(mensaje);
   }
 
+  enviarMensajePedido(mensaje: string): void {
+    this.abrirWhatsApp(mensaje);
+  }
+
   private abrirWhatsApp(mensaje: string): void {
     const mensajeEncoded = encodeURIComponent(mensaje);
     const url = `https://wa.me/${this.numeroWhatsapp}?text=${mensajeEncoded}`;
-
+    
     window.open(url, '_blank');
   }
 

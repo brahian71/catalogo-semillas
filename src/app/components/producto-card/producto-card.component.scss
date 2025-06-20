@@ -66,6 +66,22 @@
   backdrop-filter: blur(4px);
 }
 
+.carrito-badge {
+  position: absolute;
+  top: var(--spacing-md);
+  right: var(--spacing-md);
+  background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-light) 100%);
+  color: var(--white);
+  padding: var(--spacing-xs) var(--spacing-sm);
+  border-radius: var(--radius-lg);
+  font-size: 0.75rem;
+  font-weight: 700;
+  z-index: 15;
+  box-shadow: var(--shadow-md);
+  transform: translateY(0);
+  animation: bounceIn 0.6s ease-out;
+}
+
 /* ===== IMAGEN DEL PRODUCTO ===== */
 .producto-imagen {
   position: relative;
@@ -243,9 +259,123 @@
   }
 }
 
-/* ===== BOTÓN DE CONSULTA ===== */
-.consultar-btn {
-  background: linear-gradient(135deg, #25D366 0%, #20BA5A 100%);
+/* ===== SELECTOR DE CANTIDAD ===== */
+.cantidad-selector {
+  background: var(--gray-50);
+  padding: var(--spacing-md);
+  border-radius: var(--radius-md);
+  margin-bottom: var(--spacing-md);
+  border: 2px solid var(--primary-color);
+  animation: slideInDown 0.3s ease-out;
+}
+
+.cantidad-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-sm);
+  margin-bottom: var(--spacing-md);
+  
+  .cantidad-btn {
+    width: 40px;
+    height: 40px;
+    background: var(--primary-color);
+    color: var(--white);
+    border: none;
+    border-radius: var(--radius);
+    font-size: 1.25rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: var(--transition);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    &:hover:not(:disabled) {
+      background: var(--primary-light);
+      transform: scale(1.1);
+    }
+    
+    &:disabled {
+      background: var(--gray-300);
+      cursor: not-allowed;
+      transform: none;
+    }
+  }
+  
+  .cantidad-input {
+    width: 60px;
+    height: 40px;
+    text-align: center;
+    font-size: 1.125rem;
+    font-weight: 600;
+    border: 2px solid var(--gray-300);
+    border-radius: var(--radius);
+    background: var(--white);
+    
+    &:focus {
+      outline: none;
+      border-color: var(--primary-color);
+    }
+  }
+}
+
+.cantidad-acciones {
+  display: flex;
+  gap: var(--spacing-sm);
+  
+  .confirmar-btn {
+    background: linear-gradient(135deg, var(--success-color) 0%, #059669 100%);
+    color: var(--white);
+    border: none;
+    padding: var(--spacing-sm) var(--spacing-md);
+    border-radius: var(--radius);
+    font-weight: 600;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: var(--transition);
+    flex: 1;
+    
+    &:hover:not(:disabled) {
+      background: linear-gradient(135deg, #059669 0%, var(--success-color) 100%);
+      transform: translateY(-1px);
+    }
+    
+    &:disabled {
+      background: var(--gray-400);
+      cursor: not-allowed;
+    }
+  }
+  
+  .cancelar-btn {
+    background: var(--gray-300);
+    color: var(--gray-700);
+    border: none;
+    padding: var(--spacing-sm) var(--spacing-md);
+    border-radius: var(--radius);
+    font-weight: 600;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: var(--transition);
+    
+    &:hover {
+      background: var(--gray-400);
+      color: var(--gray-800);
+    }
+  }
+}
+
+/* ===== ACCIONES CONTAINER ===== */
+.acciones-container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+  margin-top: auto;
+}
+
+/* ===== BOTÓN AGREGAR AL CARRITO ===== */
+.agregar-carrito-btn {
+  background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-light) 100%);
   color: var(--white);
   border: none;
   padding: var(--spacing-md) var(--spacing-lg);
@@ -259,10 +389,9 @@
   cursor: pointer;
   transition: var(--transition);
   width: 100%;
-  margin-top: auto;
   
   &:hover:not(:disabled) {
-    background: linear-gradient(135deg, #20BA5A 0%, #25D366 100%);
+    background: linear-gradient(135deg, var(--primary-light) 0%, var(--primary-color) 100%);
     transform: translateY(-2px);
     box-shadow: var(--shadow-lg);
   }
@@ -286,15 +415,39 @@
     height: 18px;
     flex-shrink: 0;
   }
+}
+
+/* ===== BOTÓN DE CONSULTA WHATSAPP ===== */
+.consultar-btn {
+  background: linear-gradient(135deg, #25D366 0%, #20BA5A 100%);
+  color: var(--white);
+  border: none;
+  padding: var(--spacing-sm) var(--spacing-md);
+  border-radius: var(--radius-md);
+  font-weight: 600;
+  font-size: 0.85rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-xs);
+  cursor: pointer;
+  transition: var(--transition);
+  width: 100%;
   
-  @media (max-width: 576px) {
-    padding: var(--spacing-sm) var(--spacing-md);
-    font-size: 0.9rem;
-    
-    svg {
-      width: 16px;
-      height: 16px;
-    }
+  &:hover:not(:disabled) {
+    background: linear-gradient(135deg, #20BA5A 0%, #25D366 100%);
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-md);
+  }
+  
+  &:active:not(:disabled) {
+    transform: translateY(0);
+  }
+  
+  svg {
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
   }
 }
 
@@ -308,7 +461,7 @@
     height: 180px;
   }
   
-  .produto-nome {
+  .producto-nombre {
     font-size: 1.125rem;
   }
   
@@ -331,18 +484,15 @@
       padding: var(--spacing-xs);
     }
   }
-}
-
-/* ===== LOADING STATE ===== */
-.producto-card.loading {
-  .producto-imagen,
-  .producto-nome,
-  .producto-descripcion,
-  .precio-container,
-  .consultar-btn {
-    background: var(--gray-200);
-    color: transparent;
-    animation: pulse 1.5s ease-in-out infinite;
+  
+  .agregar-carrito-btn {
+    padding: var(--spacing-sm) var(--spacing-md);
+    font-size: 0.9rem;
+    
+    svg {
+      width: 16px;
+      height: 16px;
+    }
   }
 }
 
@@ -356,10 +506,28 @@
   }
 }
 
-@keyframes slideInUp {
+@keyframes bounceIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.3) translateY(-50px);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+  70% {
+    transform: scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes slideInDown {
   from {
     opacity: 0;
-    transform: translateY(30px);
+    transform: translateY(-20px);
   }
   to {
     opacity: 1;
@@ -373,7 +541,10 @@
   outline-offset: 2px;
 }
 
-.consultar-btn:focus {
+.agregar-carrito-btn:focus,
+.consultar-btn:focus,
+.confirmar-btn:focus,
+.cancelar-btn:focus {
   outline: 2px solid var(--white);
   outline-offset: 2px;
 }

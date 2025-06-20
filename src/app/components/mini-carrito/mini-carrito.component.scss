@@ -1,0 +1,465 @@
+//src/app/components/mini-carrito/mini-carrito.component.scss
+
+/* ===== MINI CARRITO STYLES ===== */
+
+.mini-carrito {
+  position: fixed;
+  bottom: var(--spacing-xl);
+  right: var(--spacing-xl);
+  z-index: 1000;
+  
+  @media (max-width: 768px) {
+    bottom: var(--spacing-lg);
+    right: var(--spacing-lg);
+  }
+}
+
+/* ===== BOTÓN FLOTANTE ===== */
+.carrito-flotante {
+  background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-light) 100%);
+  color: var(--white);
+  border: none;
+  border-radius: var(--radius-xl);
+  padding: var(--spacing-md) var(--spacing-lg);
+  cursor: pointer;
+  transition: var(--transition);
+  box-shadow: var(--shadow-lg);
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  font-weight: 600;
+  font-size: 0.95rem;
+  position: relative;
+  
+  &:hover {
+    background: linear-gradient(135deg, var(--primary-light) 0%, var(--primary-color) 100%);
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-xl);
+  }
+  
+  &.active {
+    background: linear-gradient(135deg, var(--secondary-color) 0%, var(--secondary-light) 100%);
+    transform: translateY(-3px);
+  }
+  
+  svg {
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+  }
+  
+  @media (max-width: 768px) {
+    padding: var(--spacing-sm) var(--spacing-md);
+    font-size: 0.875rem;
+    
+    .carrito-texto {
+      display: none;
+    }
+    
+    svg {
+      width: 18px;
+      height: 18px;
+    }
+  }
+}
+
+/* ===== CONTADOR DE ITEMS ===== */
+.contador-items {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  background: var(--error-color);
+  color: var(--white);
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  font-weight: 700;
+  border: 2px solid var(--white);
+  animation: bounceIn 0.6s ease-out;
+}
+
+/* ===== DROPDOWN DEL CARRITO ===== */
+.carrito-dropdown {
+  position: absolute;
+  bottom: 100%;
+  right: 0;
+  margin-bottom: var(--spacing-md);
+  background: var(--white);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-xl);
+  width: 380px;
+  max-height: 500px;
+  overflow: hidden;
+  border: 1px solid var(--gray-200);
+  animation: slideInUp 0.3s ease-out;
+  
+  @media (max-width: 480px) {
+    width: 320px;
+    right: -80px;
+  }
+  
+  @media (max-width: 400px) {
+    width: 280px;
+    right: -100px;
+  }
+}
+
+/* ===== HEADER DEL DROPDOWN ===== */
+.dropdown-header {
+  background: var(--gray-50);
+  padding: var(--spacing-md) var(--spacing-lg);
+  border-bottom: 1px solid var(--gray-200);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  
+  h3 {
+    margin: 0;
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: var(--gray-900);
+  }
+  
+  .cerrar-btn {
+    background: none;
+    border: none;
+    font-size: 1.25rem;
+    color: var(--gray-500);
+    cursor: pointer;
+    padding: var(--spacing-xs);
+    border-radius: var(--radius);
+    transition: var(--transition);
+    
+    &:hover {
+      background: var(--gray-200);
+      color: var(--gray-700);
+    }
+  }
+}
+
+/* ===== CONTENIDO DEL CARRITO ===== */
+.carrito-contenido {
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+/* ===== CARRITO VACÍO ===== */
+.carrito-vacio {
+  padding: var(--spacing-2xl);
+  text-align: center;
+  color: var(--gray-500);
+  
+  .vacio-icon {
+    font-size: 3rem;
+    margin-bottom: var(--spacing-md);
+    opacity: 0.5;
+  }
+  
+  p {
+    font-size: 1.125rem;
+    margin-bottom: var(--spacing-sm);
+    color: var(--gray-600);
+  }
+  
+  small {
+    color: var(--gray-500);
+  }
+}
+
+/* ===== ITEMS DEL CARRITO ===== */
+.carrito-items {
+  padding: var(--spacing-sm);
+}
+
+.carrito-item {
+  display: flex;
+  gap: var(--spacing-md);
+  padding: var(--spacing-md);
+  border-radius: var(--radius);
+  margin-bottom: var(--spacing-sm);
+  transition: var(--transition);
+  border: 1px solid transparent;
+  
+  &:hover {
+    background: var(--gray-50);
+    border-color: var(--gray-200);
+  }
+  
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+/* ===== IMAGEN DEL ITEM ===== */
+.item-imagen {
+  width: 50px;
+  height: 50px;
+  border-radius: var(--radius);
+  overflow: hidden;
+  flex-shrink: 0;
+  background: var(--gray-100);
+  
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+/* ===== INFO DEL ITEM ===== */
+.item-info {
+  flex: 1;
+  min-width: 0;
+  
+  h4 {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--gray-900);
+    margin: 0 0 var(--spacing-xs) 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  
+  .item-precio {
+    font-size: 0.85rem;
+    color: var(--gray-600);
+    margin: 0 0 var(--spacing-xs) 0;
+  }
+  
+  .item-subtotal {
+    font-size: 0.9rem;
+    color: var(--primary-color);
+    margin: 0;
+    
+    strong {
+      font-weight: 700;
+    }
+  }
+}
+
+/* ===== ACCIONES DEL ITEM ===== */
+.item-acciones {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-xs);
+  
+  .cantidad-btn {
+    width: 28px;
+    height: 28px;
+    background: var(--gray-200);
+    color: var(--gray-700);
+    border: none;
+    border-radius: var(--radius);
+    font-size: 0.875rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: var(--transition);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    &:hover {
+      background: var(--primary-color);
+      color: var(--white);
+    }
+    
+    &.menos:hover {
+      background: var(--warning-color);
+    }
+  }
+  
+  .cantidad {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--gray-700);
+    min-width: 20px;
+    text-align: center;
+  }
+  
+  .eliminar-btn {
+    background: none;
+    border: none;
+    font-size: 1rem;
+    cursor: pointer;
+    padding: var(--spacing-xs);
+    border-radius: var(--radius);
+    transition: var(--transition);
+    
+    &:hover {
+      background: var(--error-color);
+      transform: scale(1.1);
+    }
+  }
+}
+
+/* ===== FOOTER DEL CARRITO ===== */
+.carrito-footer {
+  border-top: 1px solid var(--gray-200);
+  padding: var(--spacing-lg);
+  background: var(--gray-50);
+}
+
+.total-container {
+  margin-bottom: var(--spacing-lg);
+  
+  .total-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--spacing-xs);
+    
+    .total-label {
+      font-size: 1.125rem;
+      font-weight: 600;
+      color: var(--gray-700);
+    }
+    
+    .total-valor {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--primary-color);
+    }
+  }
+  
+  .total-nota {
+    color: var(--gray-500);
+    font-style: italic;
+  }
+}
+
+/* ===== ACCIONES DEL FOOTER ===== */
+.footer-acciones {
+  display: flex;
+  gap: var(--spacing-sm);
+  
+  .vaciar-btn {
+    background: var(--gray-300);
+    color: var(--gray-700);
+    border: none;
+    padding: var(--spacing-sm) var(--spacing-md);
+    border-radius: var(--radius);
+    font-weight: 600;
+    font-size: 0.875rem;
+    cursor: pointer;
+    transition: var(--transition);
+    
+    &:hover {
+      background: var(--error-color);
+      color: var(--white);
+    }
+  }
+  
+  .whatsapp-btn {
+    background: linear-gradient(135deg, #25D366 0%, #20BA5A 100%);
+    color: var(--white);
+    border: none;
+    padding: var(--spacing-sm) var(--spacing-lg);
+    border-radius: var(--radius);
+    font-weight: 600;
+    font-size: 0.875rem;
+    cursor: pointer;
+    transition: var(--transition);
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    flex: 1;
+    justify-content: center;
+    
+    &:hover {
+      background: linear-gradient(135deg, #20BA5A 0%, #25D366 100%);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
+    }
+    
+    svg {
+      width: 14px;
+      height: 14px;
+    }
+  }
+}
+
+/* ===== SCROLLBAR PERSONALIZADA ===== */
+.carrito-contenido::-webkit-scrollbar {
+  width: 6px;
+}
+
+.carrito-contenido::-webkit-scrollbar-track {
+  background: var(--gray-100);
+}
+
+.carrito-contenido::-webkit-scrollbar-thumb {
+  background: var(--gray-300);
+  border-radius: var(--radius);
+}
+
+.carrito-contenido::-webkit-scrollbar-thumb:hover {
+  background: var(--gray-400);
+}
+
+/* ===== ANIMACIONES ===== */
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes bounceIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.3);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+  70% {
+    transform: scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* ===== RESPONSIVE MOBILE ===== */
+@media (max-width: 480px) {
+  .carrito-dropdown {
+    position: fixed;
+    bottom: 80px;
+    left: var(--spacing-md);
+    right: var(--spacing-md);
+    width: auto;
+    margin-bottom: 0;
+  }
+  
+  .item-info h4 {
+    font-size: 0.875rem;
+  }
+  
+  .item-acciones {
+    .cantidad-btn {
+      width: 24px;
+      height: 24px;
+      font-size: 0.75rem;
+    }
+  }
+  
+  .footer-acciones {
+    flex-direction: column;
+    
+    .whatsapp-btn {
+      justify-content: center;
+    }
+  }
+}

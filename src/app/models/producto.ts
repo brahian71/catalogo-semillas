@@ -3,7 +3,7 @@
 export interface Producto {
   id: number;
   nombre: string;
-  precio: number; 
+  precio: number; // Precio por kilogramo o por porción
   descripcion: string;
   propiedadesNutricionales: PropiedadNutricional[];
   imagen: string;
@@ -11,8 +11,8 @@ export interface Producto {
   disponible: boolean;
   descuento?: number;
   fechaCreacion: Date;
-  unidadVenta: string;
-  origen?: string;
+  unidadVenta: string; // 'kg', '500g', '250g', 'paquete', etc.
+  origen?: string; // País o región de origen
 }
 
 export interface PropiedadNutricional {
@@ -29,4 +29,26 @@ export enum CategoriaProducto {
   DESHIDRATADOS = 'deshidratados',
   ESPECIAS = 'especias',
   HARINAS = 'harinas'
+}
+
+// ===== INTERFACES DEL CARRITO =====
+
+export interface CarritoItem {
+  producto: Producto;
+  cantidad: number;
+  subtotal: number;
+}
+
+export interface Carrito {
+  items: CarritoItem[];
+  total: number;
+  cantidadItems: number;
+  fechaActualizacion: Date;
+}
+
+export interface ResumenCarrito {
+  cantidadTotalItems: number;
+  cantidadTiposProductos: number;
+  total: number;
+  hayItems: boolean;
 }
